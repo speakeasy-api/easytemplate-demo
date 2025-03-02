@@ -1,9 +1,8 @@
 package {{.Local.PackageName}}
-
 {{range .Local.Types}}
 type {{sanitizeName .Name}} struct {
     {{- range .Fields}}
     {{sanitizeName .Name}} {{sanitizeType .Type}} {{templateStructTag .}}
-    {{end}}
+    {{- end}}
 }
 {{end}}

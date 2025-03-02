@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"log"
 	"os"
@@ -56,8 +57,12 @@ func main() {
 		log.Fatal(err)
 	}
 
+	if err := engine.Init(context.Background(), data); err != nil {
+		log.Fatal(err)
+	}
+
 	// Start the engine from a typescript entrypoint.
-	if err := engine.RunScript("templates/main.ts", data); err != nil {
+	if err := engine.RunScript(context.Background(), "templates/main.ts"); err != nil {
 		log.Fatal(err)
 	}
 }

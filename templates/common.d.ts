@@ -27,4 +27,6 @@ declare global {
   ) => void;
 
   var registerTemplateFunc: (name: string, func: (...any) => void) => void;
+
+  var require: (path: string) => any;
 }
